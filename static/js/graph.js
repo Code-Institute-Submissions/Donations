@@ -40,6 +40,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     });
 
 
+
     //Calculate metrics
     var numProjectsByDate = dateDim.group();
     var numProjectsByResourceType = resourceTypeDim.group();
@@ -49,7 +50,6 @@ function makeGraphs(error, projectsJson, statesJson) {
         return d["total_donations"];
     });
     var stateGroup = stateDim.group();
-
 
     var all = ndx.groupAll();
     var totalDonations = ndx.groupAll().reduceSum(function (d) {
@@ -70,7 +70,8 @@ function makeGraphs(error, projectsJson, statesJson) {
     var totalDonationsND = dc.numberDisplay("#total-donations-nd");
     var fundingStatusChart = dc.pieChart("#funding-chart");
     var fundingStatusmap = dc.geoChoroplethChart("#funding-map");
-
+    var chart1 = dc.scatterPlot("#test1");
+    var chart2 = dc.scatterPlot("#test2");
 
     selectField = dc.selectMenu('#menu-select')
         .dimension(stateDim)
@@ -126,8 +127,8 @@ function makeGraphs(error, projectsJson, statesJson) {
         .dimension(fundingStatus)
         .group(numProjectsByFundingStatus);
 
-    fundingStatusmap.width(500)
-        .height(330)
+    fundingStatusmap.width(1000)
+        .height(395)
         .dimension(stateDim)
         .group(totalDonationsByState)
         .colors(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#7C151D"])
@@ -143,7 +144,65 @@ function makeGraphs(error, projectsJson, statesJson) {
                 + "\n"
                 + "Total Donations: " + Math.round(p["value"]) + " $";
         });
-
+    var data1 = "x,y,z\n" +
+        "1,1,3\n" +
+        "5,2,11\n" +
+        "13,13,13\n" +
+        "5,3,20\n" +
+        "12,12,10\n" +
+        "3,6,8\n" +
+        "15,2,9\n" +
+        "8,6,14\n" +
+        "1,4,9\n" +
+        "8,8,12\n" +
+        "11,7,4\n" +
+        "4,2,10\n" +
+        "7,6,3\n" +
+        "6,1,2\n" +
+        "8,13,8\n" +
+        "4,4,4\n" +
+        "9,2,7\n" +
+        "8,1,1\n" +
+        "4,13,1\n" +
+        "7,4,1\n" +
+        "8,8,8\n" +
+        "3,2,1\n" +
+        "2,3,11\n" +
+        "12,8,4\n" +
+        "20,11,6\n";
+    var data1 = d3.csv.parse(data1);
+    data1.forEach(function (x) {
+        x.x = +x.x;
+        x.y = +x.y;
+        x.z = +x.z;
+    });
+    var ndx1 = crossfilter(data1),
+        dim1 = ndx1.dimension(function (d) {
+            return [+d.x, +d.y];
+        }),
+        dim2 = ndx1.dimension(function (d) {
+            return [+d.y, +d.z];
+        }),
+        group1 = dim1.group(),
+        group2 = dim2.group();
+    chart1.width(300)
+        .height(300)
+        .x(d3.scale.linear().domain([0, 20]))
+        .yAxisLabel("y")
+        .xAxisLabel("x")
+        .clipPadding(10)
+        .dimension(dim1)
+        // .excludedOpacity(0.5)
+        .group(group1);
+    chart2.width(300)
+        .height(300)
+        .x(d3.scale.linear().domain([0, 20]))
+        .yAxisLabel("z")
+        .xAxisLabel("y")
+        .clipPadding(10)
+        .dimension(dim2)
+        // .excludedColor('#ddd')
+        .group(group2);
 
     dc.renderAll();
 }

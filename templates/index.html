@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<meta name="viewport" content="width=device-width, intial-scale=1">
 <head>
     <style>
+        body.application {
+         background-color: #FFD700 !important;
+        }
         #container {
             background-color: #FFD700;
-            position: absolute;
+            align-items: center;
             width: 100%;
-            left: 0%;
             top: 50px;
-            bottom: 100px;
-        }
-         #container1 {
-            background-color: #000000;
-            position: absolute;
-            width: 100%;
-            left: 0%;
-            top: 0px;
             bottom: 0px;
+            height: 100%;
         }
+        button {
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+        }
+
     </style>
 
     <title>School Donations Dashboard</title>
@@ -38,10 +39,11 @@
             <a class="navbar-brand" href="./">School Donations Dashboard</a>
             <button class="btn btn-info" type="button" autofocus onclick="javascript:introJs().start();">Begin Tour!
             </button>
+             <button><a  type="button"  target="_blank" href="https://www.donorschoose.org/">Donate</a>
+            </button>
         </div>
     </div>
 </div>
-<div id="container1">
 <div id="container">
 
     <div id="outer" class="container-fluid">
@@ -71,13 +73,14 @@
                         </div>
                     </div>
                     <!-- Time Chart -->
-                    <!-- funding Pie -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Funding Status
-                            </div>
-                            <div class="chart-stage" style=" background: 	#000000;
+
+                     <!-- Poverty -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Poverty Level
+                    </div>
+                    <div class="chart-stage" style=" background: 	#000000;
                    position: relative;
                    font-size: 29px;
                    color: white;
@@ -85,12 +88,12 @@
                    text-align: center;
                    padding-top: 12px;
                    padding-bottom: 0px;">
-                                <div id="funding-chart" data-step="4" data-intro="Pie" style="font-weight: normal"
-                                     data-position="right"></div>
-                            </div>
-                        </div>
+                        <div id="poverty-level-row-chart" data-step="3" data-intro="Poverty stages"
+                             style="font-weight: normal" data-position="right"></div>
                     </div>
-                    <!-- funding Pie -->
+                </div>
+            </div>
+            <!-- Poverty -->
 
                     <!-- Resources -->
                     <div class="col-sm-6">
@@ -112,7 +115,28 @@
                         </div>
                     </div>
                     <!-- Resources -->
-                    <!-- menu select -->
+
+                     <!-- funding Pie -->
+                    <div class="col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Funding Status
+                            </div>
+                            <div class="chart-stage" style=" background: 	#000000;
+                   position: relative;
+                   font-size: 29px;
+                   color: white;
+                   vertical-align: middle;
+                   text-align: center;
+                   padding-top: 12px;
+                   padding-bottom: 0px;">
+                                <div id="funding-chart" data-step="4" data-intro="Pie" style="font-weight: normal"
+                                     data-position="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- funding Pie -->
+                      <!-- menu select -->
                     <div class="col-sm-6">
                         <div class="chart-wrapper">
                             <div class="chart-title">
@@ -127,36 +151,21 @@
                    padding-top: 12px;
                    padding-bottom: 0px;">
                                 <div id="menu-select" data-step="7" data-intro="Menu" style="font-weight: normal"
-                                     data-position="right"></div>
+                                     data-position="left"></div>
                             </div>
                         </div>
                     </div>
+                    <p>Will you donate as well?</p>
+                    <h3>Is it true realy true?</h3>
+                    <h2>How much will you pay? <button><a  type="button"  target="_blank" href="https://www.donorschoose.org/">Donate</a>
+            </button></h2>
+                    <h1>This is an act of altruism</h1>
                     <!-- menu select -->
 
 
                 </div>
             </div>
 
-            <!-- Poverty -->
-            <div class="col-sm-3">
-                <div class="chart-wrapper">
-                    <div class="chart-title">
-                        Poverty Level
-                    </div>
-                    <div class="chart-stage" style=" background: 	#000000;
-                   position: relative;
-                   font-size: 29px;
-                   color: white;
-                   vertical-align: middle;
-                   text-align: center;
-                   padding-top: 12px;
-                   padding-bottom: 0px;">
-                        <div id="poverty-level-row-chart" data-step="3" data-intro="Poverty stages"
-                             style="font-weight: normal" data-position="right"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Poverty -->
 
 
             <!-- Metric 1 -->
@@ -174,14 +183,14 @@
                    padding-top: 12px;
                    padding-bottom: 0px;">
                         <div id="number-projects-nd" data-step="2" data-intro="Metric" style="font-weight: normal"
-                             data-position="right"></div>
+                             data-position="left"></div>
                     </div>
                 </div>
             </div>
             <!-- Metric 1 -->
 
             <!-- Metric 2 -->
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         Total Donations in USD
@@ -195,7 +204,7 @@
                    padding-top: 12px;
                    padding-bottom: 0px;">
                         <div id="total-donations-nd" data-step="1" data-intro="Ready" style="font-weight: normal"
-                             data-position="right"></div>
+                             data-position="left"></div>
                     </div>
                 </div>
             </div>
@@ -219,14 +228,34 @@
                     </div>
                 </div>
             </div>
+            <!--scatter-->
+            <div class="col-sm-5">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Scatter Plot
+                    </div>
+                    <div class="chart-stage" style=" background: 	#000000;
+                   position: relative;
+                   font-size: 29px;
+                   color: white;
+                   vertical-align: middle;
+                   text-align: center;
+                   padding-top: 12px;
+                   padding-bottom: 0px;">
+                        <div id="test1" data-step="9"
+                             data-intro="Excluded"
+                             style="font-weight: normal" data-position="left"></div>
+                        <div id="test2" data-step="10"
+                             data-intro="Included"
+                             style="font-weight: normal" data-position="left"></div>
+                    </div>
+                </div>
+
         </div>
     </div>
 
     <hr>
     <p>Ollyfun: <span class="glyphicon glyphicon-copyright-mark"></span>fun</p>
-</div>
-
-
 </div>
 </div>
 <script src="../static/lib/js/jquery.min.js"></script>
