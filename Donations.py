@@ -9,7 +9,7 @@ app = Flask(__name__)
 MONGODB_URI = os.getenv('MONGODB_URI')
 
 DBS_NAME = 'donorsUSA'
-COLLECTION_NAME = 'projects'
+COLLECTION_NAME = 'donations1'
 FIELDS = {'funding_status': True, 'school_state': True, 'resource_type': True, 'poverty_level': True,
           'date_posted': True, 'total_donations': True,  'school_latitude': True, 'school_longitude': True, '_id': False}
 
