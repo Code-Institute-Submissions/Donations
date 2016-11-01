@@ -19,7 +19,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/donorsUS/projects")
+@app.route("/donorsUS/donations1")
 def donor_projects():
     connection = MongoClient(MONGODB_URI)
     collection = connection[DBS_NAME][COLLECTION_NAME]
