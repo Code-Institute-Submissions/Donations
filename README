@@ -1,3 +1,4 @@
+
 # Technologies used: Python, Html5, Css3, Cmder, GitHub, Bootstrap, JQuery, Json, PyCharm, MongoDB, Flask, Heroku,
    JavaScript libraries: d3.js, dc.js, Queue.js and crossfilter.js
 
@@ -5,12 +6,14 @@
 
 # I have set up css by my liking of colour and size
 
-# From what i learned in the notes I build all graph's and ive added an extra graph of total Donations by state, which
+# From what i learned in the notes provided at Code Institute I build all graph's and ive added an extra graph of total Donations by state, which
   interact's with same data as the other graph's except for Scatter Plot
 
 # Scatter plot or also called Scatter graph is similar to line graph's and they show how much one variable is affected by
   another as for its data that you see shown when you interact with it while dragging with a mouse over one of the two
   I have writen it within the graph.js so its taken locally
+
+# Code for scatter brushing i borrowed from examples of using dc.js
 
 # I thought the whole donations for school is a great idea so I added a donate button and linked it to original site if
   anybody that stumbles upon this site might want to contribute something for a good cause and influence the change in graph's

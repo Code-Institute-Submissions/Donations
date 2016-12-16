@@ -15,10 +15,10 @@ function makeGraphs(error, projectsJson, statesJson) {
     });
 
 
-    //Create a Crossfilter instance
+    // Crossfilter instance
     var ndx = crossfilter(donorsUSProjects);
 
-    //Define Dimensions
+    //Defined Dimensions
     var dateDim = ndx.dimension(function (d) {
         return d["date_posted"];
     });
@@ -41,7 +41,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 
 
 
-    //Calculate metrics
+    //Calculating metrics
     var numProjectsByDate = dateDim.group();
     var numProjectsByResourceType = resourceTypeDim.group();
     var numProjectsByPovertyLevel = povertyLevelDim.group();
@@ -58,7 +58,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 
     var max_state = totalDonationsByState.top(1)[0].value;
 
-    //Define values (to be used in charts)
+    //Defining values (used in charts)
     var minDate = dateDim.bottom(1)[0]["date_posted"];
     var maxDate = dateDim.top(1)[0]["date_posted"];
 
@@ -144,6 +144,7 @@ function makeGraphs(error, projectsJson, statesJson) {
                 + "\n"
                 + "Total Donations: " + Math.round(p["value"]) + " $";
         });
+      // Scaterplot input data and graph
     var data1 = "x,y,z\n" +
         "1,1,3\n" +
         "5,2,11\n" +
